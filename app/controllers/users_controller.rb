@@ -5,10 +5,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params.require(:user).permit!)
-    if @user.save
-      redirect_to root_path
-    else
-      render :new
+    unless @user.save
+      render :new and return
     end
   end
 end
