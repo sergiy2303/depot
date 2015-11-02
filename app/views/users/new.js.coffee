@@ -1,1 +1,1 @@
-$('form').replaceWith("<%= j(render 'form') %>")
+$('body').html("<%= j(render 'form') %>")
