@@ -1,0 +1,6 @@
+general:
+  artifacts:
+    - 'tmp/capybara'
+test:
+  post:
+    - bundle exec rubocop

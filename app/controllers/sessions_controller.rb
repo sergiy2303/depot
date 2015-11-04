@@ -1,11 +1,7 @@
 class SessionsController < ApplicationController
-  def new
-  end
-
   def create
-    @session = Session.new(params[:session])
-    if @session.valid?
-      session[:user_id] = @session.user_id
+    if user_session.valid?
+      session[:user_id] = user_session.user_id
     else
       render :new
     end
@@ -14,4 +10,11 @@ class SessionsController < ApplicationController
   def destroy
     reset_session
   end
+
+  private
+
+  def user_session
+    @session ||= Session.new(params[:session] || {})
+  end
+  helper_method :user_session
 end

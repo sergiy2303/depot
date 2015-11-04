@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
-  def new
-    @user = User.new
+  def create
+    render(:new) unless user.update(params.require(:user).permit!)
   end
 
-  def create
-    @user = User.new(params.require(:user).permit!)
-    unless @user.save
-      render :new and return
-    end
+  private
+
+  def user
+    @user ||= User.new
   end
+  helper_method :user
 end

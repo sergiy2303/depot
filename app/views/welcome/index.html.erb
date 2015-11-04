@@ -2,12 +2,9 @@
   <h1> Hello! </h1>
 </div>
 
-<% unless current_user %>
-  <p>
-    Don't have a account?
-    <%= link_to 'Click here', new_user_path, remote: true %>
-    <div>-- or --</div>
-    <div>Sign in </div>
-  </p>
-  <%= render 'sessions/form' %>
-<% end %>
+<p>
+  Don't have a account?
+  <%= link_to 'Click here', new_user_path %>
+  <div>-- or --</div>
+  <%= link_to 'Sign in', new_session_path %>
+</p>

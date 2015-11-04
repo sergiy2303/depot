@@ -1,21 +1,21 @@
-<%= form_for @user, url: user_path, remote: true do |f| %>
+<%= form_for user, url: user_path, remote: true do |f| %>
   <p>
     <%= f.label :email %>
     <br>
     <%= f.text_field :email %>
-    <%= @user.errors[:email].first %>
+    <%= user.errors[:email].first %>
   </p>
   <p>
     <%= f.label :password %>
     <br>
     <%= f.password_field :password %>
-    <%= @user.errors[:password].first %>
+    <%= user.errors[:password].first %>
   </p>
   <p>
     <%= f.label :password_confirmation %>
     <br>
     <%= f.password_field :password_confirmation %>
-    <%= @user.errors[:password_confirmation].first %>
+    <%= user.errors[:password_confirmation].first %>
   </p>
   <%= f.submit :OK %>
 <% end %>
