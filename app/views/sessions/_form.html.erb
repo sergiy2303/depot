@@ -1,9 +1,5 @@
-<%= form_for user_session, url: session_path, remote: true do |f| %>
-  <%= f.label :email, 'Email' %>
-  <%= f.text_field :email %>
-  <%= user_session.errors[:email].first %>
-  <%= f.label :password, 'Password' %>
-  <%= f.password_field :password %>
-  <%= user_session.errors[:password].first %>
-  <%= f.button 'OK', data: { disable_with: 'Loading...' } %>
+<%= simple_form_for user_session, url: session_path, remote: true do |f| %>
+  <%= f.input :email %>
+  <%= f.input :password %>
+  <%= f.button :button, :OK, class: 'btn-primary' %>
 <% end %>

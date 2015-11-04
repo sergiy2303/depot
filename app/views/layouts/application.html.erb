@@ -12,7 +12,8 @@
     <%= current_user.email %>
     <%= link_to 'Sign Out', session_path, method: :delete, remote: true %>
   <% end %>
-<%= yield %>
-
+  <div class='container'>
+    <%= yield %>
+  </div>
 </body>
 </html>
