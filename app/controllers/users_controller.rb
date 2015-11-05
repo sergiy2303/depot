@@ -1,6 +1,13 @@
 class UsersController < ApplicationController
   def create
-    render(:new) unless user.update(params.require(:user).permit!)
+    render(:new) and return unless user.update(params.require(:user).permit!)
+    UserMailer.welcome_email(@user).deliver_now!
+  end
+
+  def confirmation
+    @user = create_user_by_token(params[:token])
+    @user.confirm!
+    redirect_to root_path
   end
 
   private
@@ -9,4 +16,10 @@ class UsersController < ApplicationController
     @user ||= User.new
   end
   helper_method :user
+
+  def create_user_by_token(token)
+    verifier = ActiveSupport::MessageVerifier.new(Rails.application.secrets[:secret_key_base])
+    user_id = verifier.verify(token)
+    User.find(user_id[:user_id])
+  end
 end
