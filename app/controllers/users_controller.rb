@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def confirmation
     @user = create_user_by_token(params[:token])
-    @user.confirm!
+    @user.confirm! if @user
     redirect_to root_path
   end
 
@@ -21,5 +21,7 @@ class UsersController < ApplicationController
     verifier = ActiveSupport::MessageVerifier.new(Rails.application.secrets[:secret_key_base])
     user_id = verifier.verify(token)
     User.find(user_id[:user_id])
+  rescue ActiveSupport::MessageVerifier::InvalidSignature
+    nil
   end
 end
