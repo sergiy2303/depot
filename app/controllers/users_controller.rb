@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def create
     render(:new) and return unless user.update(params.require(:user).permit!)
-    UserMailer.welcome_email(@user).deliver_now!
+    EmailJob.new.async.perform(@user)
   end
 
   def confirmation
