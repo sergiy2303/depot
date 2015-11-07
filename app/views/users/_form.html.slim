@@ -1,0 +1,5 @@
+= simple_form_for user, url: user_path, remote: true do |f|
+  = f.input :email
+  = f.input :password
+  = f.input :password_confirmation
+  = f.button :button, :OK, class: 'btn-primary'
