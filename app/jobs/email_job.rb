@@ -1,7 +1,7 @@
 class EmailJob
   include SuckerPunch::Job
 
-  def perform(user)
-  	UserMailer.welcome_email(user).deliver_now!
+  def confirmation(user)
+  	user.send_instructions!
   end
 end

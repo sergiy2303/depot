@@ -37,7 +37,7 @@ describe 'Users' do
       expect(page).to have_content('Hello!')
     end
 
-    it 'try to login unconfirmed user' do
+    it 'try to login via unconfirmed user' do
       visit '/'
       click_link 'Sign in'
       within '#new_session' do
