@@ -11,5 +11,5 @@ html
       = current_user.email
       = link_to 'Sign Out', session_path, method: :delete, remote: true
 
-    div class = 'container'
+    .container
       = yield

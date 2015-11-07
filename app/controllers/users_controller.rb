@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def create
-    render(:new) unless user.update(params.require(:user).permit!)
+    render(:new) && return unless user.update(params.require(:user).permit!)
+    UserMailer.signup_confirmation(@user).deliver_now!
   end
 
   private
