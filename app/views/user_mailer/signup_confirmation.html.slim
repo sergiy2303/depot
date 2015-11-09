@@ -3,5 +3,5 @@ html
   head
   body
     h1 Welcom to geekhub depot, #{@user.email}
-    p Follow this link to activate your email
-    p #{@link}
+    p Follow this link to activate your email:
+    = link_to "Confirmation", user_confirm_url(token: @user.confirmation_token)

@@ -5,11 +5,8 @@ class UsersController < ApplicationController
   end
 
   def confirm
-    verifier = ActiveSupport::MessageVerifier.new(Rails.application.secrets.user_confirmation_base)
-    message = verifier.verify(params[:message])
-    @user = User.find_by_id(message[:id])
-    @user.confirmed = true
-    @user.save
+    @user = User.find_by_token(params[:token])
+    @user.update(confirmed: true) if @user
     redirect_to root_path
   end
 
