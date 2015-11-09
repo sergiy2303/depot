@@ -27,6 +27,6 @@ class Session
   def user_session
     errors.add(:email, 'Invalid email or pass') && return unless user
     errors.add(:email, 'Invalid email or pass') unless user.authenticate(password)
-    # end
+    errors.add(:email, 'Please confirm your email') unless user.confirmed
   end
 end
