@@ -7,9 +7,7 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
-    - if current_user
-      = current_user.email
-      |  
-      = link_to 'Sign Out', session_path, method: :delete, remote: true
-    .container
+    = render 'shared/navbar'
+    = render 'shared/notifications'
+    .container.col-xs-8.col-xs-offset-2
       = yield

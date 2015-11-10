@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   def confirm!
     self.confirmed = true
-    self.save
+    save
   end
 
   def send_instructions!
@@ -13,6 +13,6 @@ class User < ActiveRecord::Base
 
   def create_token
     verifier = ActiveSupport::MessageVerifier.new(Rails.application.secrets[:secret_key_base])
-    verifier.generate(user_id: self.id)
+    verifier.generate(user_id: id)
   end
 end

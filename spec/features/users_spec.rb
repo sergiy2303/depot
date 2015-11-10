@@ -8,7 +8,7 @@ describe 'Users' do
   describe 'Sign Up' do
     it 'registers user', js: true do
       visit '/'
-      click_link 'Click here'
+      click_link 'Sign Up'
       click_button(:OK)
       expect(page).to have_content("can't be blank")
       within '#new_user' do
@@ -18,13 +18,14 @@ describe 'Users' do
       end
       click_button(:OK)
       expect(page).to have_content('Hello!')
+      expect(page).to have_content('On your email address was sent message to confirm your current address.')
     end
   end
 
   describe 'Sign In' do
     it 'logins user', js: true do
       visit '/'
-      click_link 'Sign in'
+      click_link 'Sign In'
       click_button(:OK)
       expect(page).to have_content("can't be blank")
       within '#new_session' do
@@ -39,7 +40,7 @@ describe 'Users' do
 
     it 'try to login via unconfirmed user' do
       visit '/'
-      click_link 'Sign in'
+      click_link 'Sign In'
       within '#new_session' do
         fill_in 'Email', with: user_2.email
         fill_in 'Password', with: user_2.password

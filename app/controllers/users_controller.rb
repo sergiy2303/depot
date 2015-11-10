@@ -1,13 +1,18 @@
 class UsersController < ApplicationController
   def create
-    render(:new) and return unless user.update(params.require(:user).permit!)
+    render(:new) && return unless user.update(params.require(:user).permit!)
     EmailJob.new.async.confirmation(@user)
+    flash[:notice] = 'On your email address was sent message to confirm your current address.'
   end
 
   def confirmation
     @user = create_user_by_token(params[:token])
-    @user.confirm! if @user
-    redirect_to root_path
+    if @user
+      @user.confirm!
+      redirect_to root_path, notice: 'Your account has been successfully confirmed.'
+    else
+      redirect_to root_path, alert: 'Invalid token.'
+    end
   end
 
   private
