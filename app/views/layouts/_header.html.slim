@@ -1,0 +1,16 @@
+header class="row well"
+ .col-md-9
+   nav
+    p navbar
+   = link_to ' Home', root_path, class: 'btn btn-default glyphicon glyphicon-home'
+ .col-md-3
+  - if current_user
+   p
+    span Hello! #{current_user.email}
+   = link_to ' Sign Out', session_path, method: :delete, remote: true, class: 'btn btn-default glyphicon glyphicon-log-out'
+   = link_to ' Cart', 'cart/', remote: true, class: 'btn btn-default glyphicon glyphicon-shopping-cart'
+  - else
+   p Hello! Don't have an account?
+   = link_to ' Click here', new_user_path, class: 'btn btn-default glyphicon glyphicon-user'
+   '
+   = link_to ' Sign in', new_session_path, class: 'btn btn-default glyphicon glyphicon-log-in'

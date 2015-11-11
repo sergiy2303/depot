@@ -1,2 +1,9 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+
+
+aside {
+  div {
+    min-height: 20em;
+  }
+}
