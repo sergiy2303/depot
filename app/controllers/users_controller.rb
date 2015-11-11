@@ -1,25 +1,23 @@
 class UsersController < ApplicationController
+  before_action :require_guest, only: :new
+
   def create
     if user.update(params.require(:user).permit!)
-      UserMailer.registration_confirmation(user).deliver
+      UserMailer.registration_confirmation(user, verifier.generate(user.id)).deliver_later
       flash[:success] = 'Please confirm your email address to continue'
+      redirect_via_turbolinks_to root_path
     else
-      flash[:error] = 'Ooooops, something went wrong!'
       render(:new)
     end
   end
 
-  def confirm_email
-    user = User.find_by_confirm_token(params[:id])
-    if user
-      user.email_activate
-      flash[:success] = 'Welcome to the Sample App! Your email has been confirmed.
-      Please sign in to continue'
-      redirect_to root_path
-    else
-      flash[:error] = 'Sorry. User does not exist'
-      redirect_to root_path
-    end
+  def confirm
+    user = User.find(verifier.verify(params[:id]))
+    user.update_column(:confirmed, true)
+    flash[:success] = 'Your email has been confirmed. Please sign in to continue'
+    redirect_to root_path
+  rescue ActiveSupport::MessageVerifier::InvalidSignature
+    redirect_to root_path
   end
 
   private

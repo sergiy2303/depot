@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   root 'welcome#index'
   resources :users do
-    member do
-      get :confirm_email
-    end
+    get :confirm, on: :member
+  end
+
+  namespace :admin do
+    resources :products, only: :index
   end
 end
