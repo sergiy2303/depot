@@ -1,8 +1,7 @@
-class UserMailer < ApplicationMailer
-  default from: 'geekhub.depot@gmail.com'
-
-  def signup_confirmation(user)
-    @user = user
-    mail to: @user.email, subject: 'Sign up confirmation'
+class UserMailer < ActionMailer::Base
+  default from: 'support@geekhub.com'
+  def registration_confirmation(user, token)
+    @token = token
+    mail(to: user.email, subject: 'Registration Confirmation')
   end
 end

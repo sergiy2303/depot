@@ -1,12 +1,22 @@
 class UsersController < ApplicationController
+  before_action :require_guest, only: :new
+
   def create
-    render(:new) && return unless user.update(params.require(:user).permit!)
-    UserMailer.signup_confirmation(@user).deliver_later
+    if user.update(params.require(:user).permit!)
+      UserMailer.registration_confirmation(user, verifier.generate(user.id)).deliver_later
+      flash[:success] = 'Please confirm your email address to continue'
+      redirect_via_turbolinks_to root_path
+    else
+      render(:new)
+    end
   end
 
   def confirm
-    @user = User.find_by_token(params[:token])
-    @user.update(confirmed: true) if @user
+    user = User.find(verifier.verify(params[:id]))
+    user.update_column(:confirmed, true)
+    flash[:success] = 'Your email has been confirmed. Please sign in to continue'
+    redirect_to root_path
+  rescue ActiveSupport::MessageVerifier::InvalidSignature
     redirect_to root_path
   end
 

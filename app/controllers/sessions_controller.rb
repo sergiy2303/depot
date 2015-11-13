@@ -1,7 +1,9 @@
 class SessionsController < ApplicationController
+  before_action :require_guest, only: :new
   def create
     if user_session.valid?
       session[:user_id] = user_session.user_id
+      redirect_via_turbolinks_to root_path
     else
       render :new
     end

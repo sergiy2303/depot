@@ -4,7 +4,6 @@ ruby '2.2.3'
 
 gem 'rails', '4.2.4'
 gem 'sass-rails', '~> 5.0'
-gem 'slim-rails'
 gem 'pg'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
@@ -14,8 +13,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'simple_form'
-
+gem 'slim'
 gem 'sucker_punch'
+
 gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
@@ -32,6 +32,7 @@ end
 gem 'rails_12factor', group: :production
 
 group :development do
+  gem 'letter_opener'
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end

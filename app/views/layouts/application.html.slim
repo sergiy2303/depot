@@ -1,15 +1,14 @@
 doctype html
 html
- head
+head
   title Geekhub
   = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
   = javascript_include_tag 'application', 'data-turbolinks-track' => true
   = csrf_meta_tags
- body
-  .container
-    = render 'layouts/header'
-    main class="row"
-     = render 'layouts/sidebar'
-     .content.col-md-9
-      = yield
-    = render 'layouts/footer'
+body
+  - if current_user
+    = current_user.email
+    = link_to 'Sign Out', session_path, method: :delete, remote: true
+  = render 'shared/flashes'
+  div class='container'
+    = yield
