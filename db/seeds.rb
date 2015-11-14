@@ -18,3 +18,12 @@ titles = [
 ]
 
 titles.each { |i| Category.create(title: i) }
+
+#   Products should have name, description, image, price, category_id
+70.times do
+  Product.create(name:        Faker::Commerce.product_name,
+                 description: Faker::Lorem.sentence,
+                 image:       Faker::Avatar.image,
+                 price:       Faker::Commerce.price,
+                 category_id: rand(1..Category.all.size))
+end

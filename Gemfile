@@ -27,6 +27,7 @@ group :development, :test do
   gem 'poltergeist'
   gem 'rubocop'
   gem 'simplecov', require: false
+  gem 'faker'
 end
 
 gem 'rails_12factor', group: :production
