@@ -1,0 +1,9 @@
+title 'Products'
+= paginate @products
+
+- @products.each do |product|
+  .product
+    p
+      = link_to product.name, admin_product_path(product.id)
+    .details
+      = number_to_currency(product.price)

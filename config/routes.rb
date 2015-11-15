@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :products, only: :index
+    resources :products
   end
 end
