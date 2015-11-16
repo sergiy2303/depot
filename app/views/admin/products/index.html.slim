@@ -1,9 +1,15 @@
 title 'Products'
+
+.new-product
+  h1 = link_to 'Create new product', new_admin_product_path
+
 = paginate @products
 
 - @products.each do |product|
   .product
     p
-      = link_to product.name, admin_product_path(product.id)
-    .details
-      = number_to_currency(product.price)
+    =' link_to product.name, admin_product_path(product.id)
+    =' number_to_currency(product.price)
+    ' Manage product:
+    =' link_to "Edit", edit_admin_product_path(product.id)
+    =' link_to "Destroy", admin_product_path(product.id), method: :delete, remote: true
