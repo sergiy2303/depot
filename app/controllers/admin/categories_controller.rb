@@ -5,6 +5,10 @@ class Admin::CategoriesController < ApplicationController
     @categories = Category.page(params[:page]).per(10)
   end
 
+  def show
+    @products = Product.where(category_id: current_category.id)
+  end
+
   def create
     if category.update(params.require(:category).permit!)
       flash[:success] = 'Category was successfully created'
