@@ -6,9 +6,12 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def create
-    return unless category.update(params.require(:category).permit!)
-    flash[:success] = 'Category was successfully created'
-    redirect_to admin_categories_path
+    if category.update(params.require(:category).permit!)
+      flash[:success] = 'Category was successfully created'
+      redirect_to admin_categories_path
+    else
+      render :new
+    end
   end
 
   def update
