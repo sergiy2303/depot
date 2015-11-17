@@ -1,4 +1,4 @@
-= simple_form_for user, url: user_path, remote: true do |f|
+= simple_form_for user, url: { action: action }, remote: true do |f|
   = f.input :email
   = f.input :password
   = f.input :password_confirmation

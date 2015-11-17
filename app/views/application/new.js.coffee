@@ -1,1 +1,1 @@
-$('form').html("<%= j(render 'form') %>")
+$('form').html("<%= j(render 'form', action: 'create') %>")

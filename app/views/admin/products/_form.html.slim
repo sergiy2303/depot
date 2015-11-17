@@ -1,0 +1,6 @@
+= form_for product, url: { action: action }, remote: false do |f|
+  = f.text_field :name
+  = f.text_field :description
+  = f.text_field :image
+  = f.text_field :price
+  = f.submit 'Save'
