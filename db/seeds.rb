@@ -17,13 +17,14 @@ titles = [
   'Footwear'
 ]
 
-titles.each { |i| Category.create(title: i) }
+# titles.each { |i| Category.create(title: i) }
 
 #   Products should have name, description, image, price, category_id
-70.times do
-  Product.create(name:        Faker::Commerce.product_name,
+categories_ids = Category.pluck(:id)
+11.times do
+  Product.create!(name:        Faker::Commerce.product_name,
                  description: Faker::Lorem.sentence,
-                 image:       Faker::Avatar.image,
+                 remote_image_url:       Faker::Avatar.image.gsub('http', 'https'),
                  price:       Faker::Commerce.price,
-                 category_id: rand(1..Category.all.size))
+                 category_id: categories_ids.sample)
 end

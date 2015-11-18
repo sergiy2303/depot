@@ -1,6 +1,6 @@
 .description
-  h2 = current_category.title
-  - @products.each do |product|
+  h2 = category.title
+  - category.products.each do |product|
       .product
         =' link_to product.name, admin_product_path(product.id)
         =' number_to_currency(product.price)

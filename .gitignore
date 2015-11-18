@@ -15,5 +15,7 @@
 /log/*
 !/log/.keep
 /tmp
+/public/uploads
+/tags
 /coverage
 /config/database.yml

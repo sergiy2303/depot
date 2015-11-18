@@ -1,16 +1,10 @@
 class Admin::CategoriesController < ApplicationController
   before_action :require_user
-
-  def index
-    @categories = Category.page(params[:page]).per(10)
-  end
-
-  def show
-    @products = Product.where(category_id: current_category.id)
-  end
+  expose :category
+  expose(:categories) { |default| default.page(params[:page]).per(10) }
 
   def create
-    if category.update(params.require(:category).permit!)
+    if category.update(category_params)
       flash[:success] = 'Category was successfully created'
       redirect_via_turbolinks_to admin_categories_path
     else
@@ -19,25 +13,19 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def update
-    current_category.update_attributes(params[:category].permit!)
+    category.update(category_params)
     flash[:success] = 'Category was successfully updated'
     redirect_via_turbolinks_to admin_categories_path
   end
 
   def destroy
-    current_category.destroy
+    category.destroy
     redirect_via_turbolinks_to admin_categories_path
   end
 
   private
 
-  def category
-    @category ||= Category.new
+  def category_params
+    params.require(:category).permit!
   end
-  helper_method :category
-
-  def current_category
-    @current_category ||= Category.find_by(id: params[:id])
-  end
-  helper_method :current_category
 end
