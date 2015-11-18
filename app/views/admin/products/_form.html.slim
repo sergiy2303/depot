@@ -1,0 +1,7 @@
+= simple_form_for product, url: admin_products_path, remote: true do |f|
+  = f.input :name
+  = f.input :description
+  = f.input :image
+  = f.input :price
+  = f.association :category
+  = f.button :button, "Create", class: 'btn-primary'

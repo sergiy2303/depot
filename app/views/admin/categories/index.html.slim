@@ -1,0 +1,12 @@
+.new-category
+  h1 = link_to 'Create new category', new_admin_category_path
+
+= paginate @categories
+
+- @categories.each do |category|
+  .category
+    p
+    =' link_to category.title, admin_category_path(category.id)
+    ' Manage category:
+    =' link_to "Edit", edit_admin_category_path(category.id)
+    =' link_to "Destroy", admin_category_path(category.id), method: :delete, remote: true
