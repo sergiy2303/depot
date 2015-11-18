@@ -1,4 +1,4 @@
-= simple_form_for current_product, url: {action: 'update'} do |f|
+= simple_form_for current_product, url: {action: 'update'}, remote: true do |f|
   = f.input :name
   = f.input :description
   = f.input :image

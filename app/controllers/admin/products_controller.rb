@@ -8,7 +8,7 @@ class Admin::ProductsController < ApplicationController
   def create
     if product.update(params.require(:product).permit!)
       flash[:success] = 'Product was successfully created'
-      redirect_to admin_product_path(product.id)
+      redirect_via_turbolinks_to admin_product_path(product.id)
     else
       render :new
     end
@@ -22,7 +22,7 @@ class Admin::ProductsController < ApplicationController
   def update
     current_product.update_attributes(params[:product].permit!)
     flash[:success] = 'Product was successfully updated'
-    redirect_to admin_product_path(current_product.id)
+    redirect_via_turbolinks_to admin_product_path(current_product.id)
   end
 
   private

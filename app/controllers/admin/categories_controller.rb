@@ -12,7 +12,7 @@ class Admin::CategoriesController < ApplicationController
   def create
     if category.update(params.require(:category).permit!)
       flash[:success] = 'Category was successfully created'
-      redirect_to admin_categories_path
+      redirect_via_turbolinks_to admin_categories_path
     else
       render :new
     end
@@ -21,7 +21,7 @@ class Admin::CategoriesController < ApplicationController
   def update
     current_category.update_attributes(params[:category].permit!)
     flash[:success] = 'Category was successfully updated'
-    redirect_to admin_categories_path
+    redirect_via_turbolinks_to admin_categories_path
   end
 
   def destroy
