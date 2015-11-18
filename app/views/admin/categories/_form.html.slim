@@ -1,0 +1,9 @@
+.col-xs-6.col-xs-offset-2
+  = form_for category, url: { action: action }, class: 'form-group', remote: false do |f|
+    = f.label :category, 'Category'
+    = f.text_field :category, class: 'form-control'
+    = f.label :description, 'Description'
+    = f.text_area :description, class: 'form-control'
+    .text-center
+      p
+      = f.submit 'Save', class: 'btn btn-primary'

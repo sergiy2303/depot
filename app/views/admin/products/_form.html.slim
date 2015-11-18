@@ -1,6 +1,13 @@
-= form_for product, url: { action: action }, remote: false do |f|
-  = f.text_field :name
-  = f.text_field :description
-  = f.text_field :image
-  = f.text_field :price
-  = f.submit 'Save'
+.col-xs-6.col-xs-offset-2
+  = form_for product, url: { action: action }, class: 'form-group', remote: false do |f|
+    = f.label :name, 'Name'
+    = f.text_field :name, class: 'form-control'
+    = f.label :description, 'Description'
+    = f.text_field :description, class: 'form-control'
+    = f.label :image, 'Image'
+    = f.text_field :image, class: 'form-control'
+    = f.label :price, 'Price'
+    = f.text_field :price, class: 'form-control'
+    = f.select :category_id, options_from_collection_for_select(fetch_category_array, :id, :category), prompt: 'Select one', class: 'form-control'
+    .text-center
+      = f.submit 'Save', class: 'btn btn-primary'
