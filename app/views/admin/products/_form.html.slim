@@ -1,4 +1,4 @@
-= simple_form_for product, url: admin_products_path, remote: true, authenticity_token: true  do |f|
+= simple_form_for [:admin, product], remote: true, authenticity_token: true  do |f|
   = f.input :name
   = f.input :description
   = image_tag(product.image.url, id: 'product_image_preview')

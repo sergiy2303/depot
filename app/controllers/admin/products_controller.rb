@@ -1,12 +1,10 @@
 class Admin::ProductsController < ApplicationController
   before_action :require_user
-
-  def index
-    @products = Product.page(params[:page]).per(10)
-  end
+  expose :product
+  expose(:products) { |default| default.page(params[:page]).per(10) }
 
   def create
-    if product.update(params.require(:product).permit!)
+    if product.update(product_params)
       flash[:success] = 'Product was successfully created'
       redirect_via_turbolinks_to admin_product_path(product.id)
     else
@@ -15,25 +13,19 @@ class Admin::ProductsController < ApplicationController
   end
 
   def destroy
-    current_product.destroy
+    product.destroy
     redirect_via_turbolinks_to admin_products_path
   end
 
   def update
-    current_product.update_attributes(params[:product].permit!)
+    product.update(product_params)
     flash[:success] = 'Product was successfully updated'
-    redirect_via_turbolinks_to admin_product_path(current_product.id)
+    redirect_via_turbolinks_to admin_product_path(product.id)
   end
 
   private
 
-  def product
-    @product ||= Product.new
+  def product_params
+    params[:product].permit!
   end
-  helper_method :product
-
-  def current_product
-    @current_product = Product.find_by(id: params[:id])
-  end
-  helper_method :current_product
 end

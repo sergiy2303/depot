@@ -17,7 +17,7 @@ titles = [
   'Footwear'
 ]
 
-# titles.each { |i| Category.create(title: i) }
+titles.each { |i| Category.create(title: i) }
 
 #   Products should have name, description, image, price, category_id
 categories_ids = Category.pluck(:id)
