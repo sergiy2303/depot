@@ -10,6 +10,7 @@ class WelcomeController < ApplicationController
 
   def products
     products = params[:category] ? category.products : Product.all
+    products = products.contain(params[:search][:name]) if params[:search]
     products.page(params[:page]).per(8)
   end
   helper_method :products
