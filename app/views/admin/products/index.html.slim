@@ -4,12 +4,22 @@ title 'Products'
   h1 = link_to 'Create new product', new_admin_product_path
 
 = paginate @products
-
-- @products.each do |product|
-  .product
-    p
-    =' link_to product.name, admin_product_path(product.id)
-    =' number_to_currency(product.price)
-    ' Manage product:
-    =' link_to "Edit", edit_admin_product_path(product.id)
-    =' link_to "Destroy", admin_product_path(product.id), method: :delete, remote: true
+table.table
+  thead
+    tr
+      th Id
+      th Name
+      th Description
+      th Image
+      th Price
+  tbody
+    - @products.each do |product|
+      tr
+        td = product.id
+        td = link_to product.name, admin_product_path(product.id)
+        td = product.description
+        td = image_tag product.image, class: 'img-preview'
+        td = product.price
+        td
+          = link_to "Edit", edit_admin_product_path(product.id)
+          = link_to "Destroy", admin_product_path(product.id), method: :delete, remote: true

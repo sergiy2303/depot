@@ -12,6 +12,7 @@ gem 'decent_exposure'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
 gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
@@ -21,6 +22,9 @@ gem 'sucker_punch'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 gem 'bcrypt', '~> 3.1.7'
+gem 'elasticsearch', git: 'git://github.com/elasticsearch/elasticsearch-ruby.git'
+gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
+gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
 
 group :development, :test do
   gem 'capybara'

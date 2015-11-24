@@ -1,0 +1,16 @@
+div class='content'
+  h1 DEPOT
+  p Don't have an account?
+  div
+    = link_to 'Click here', new_user_path
+    |  
+    = link_to 'Sign in', new_session_path
+.row.search-field
+  .col-xs-3.col-xs-offset-9
+    = label_tag :search, 'Search'
+    = text_field_tag :search, '', class: 'form-control search-field'
+.row
+  .col-xs-3.categories-body
+    = render 'categories'
+  .col-xs-9.products-body
+    = render 'products'

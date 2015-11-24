@@ -1,0 +1,13 @@
+.row
+  - @products.each do |product|
+    .col-sm-6.col-md-4
+      .thumbnail
+        =image_tag product.image
+        .caption
+          h3 = link_to product.name, product_path(product.id)
+          p = number_to_currency(product.price)
+.row
+  .text-center
+    = flash[:notice]
+  .text-center
+    = paginate @products, theme: 'twitter-bootstrap-3'

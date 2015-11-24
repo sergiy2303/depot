@@ -1,2 +1,5 @@
-- if flash.any?
+- if flash[:error]
   .alert class="alert-#{flash.first.first}" = flash.first.last
+- if flash[:alert]
+  .alert class="alert-#{flash.first.first}" = flash.first.last
+
