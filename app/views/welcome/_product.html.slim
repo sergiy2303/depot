@@ -1,0 +1,11 @@
+= paginate products
+.row
+  - products.each do |product|
+    .col-sm-3
+      .thumbnail
+        = image_tag(product.image)
+        .caption
+          h3 = product.name
+          p  = product.description
+          p  = number_to_currency(product.price)
+

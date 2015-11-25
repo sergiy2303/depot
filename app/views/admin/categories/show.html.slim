@@ -1,6 +1,8 @@
-.description
-  h2 = category.title
-  - category.products.each do |product|
-      .product
-        =' link_to product.name, admin_product_path(product.id)
-        =' number_to_currency(product.price)
+table.table
+  thead
+    tr
+      th Name
+      th Price
+      th colspan=2 Action
+  tbody
+    =render category.products

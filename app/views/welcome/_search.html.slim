@@ -1,0 +1,4 @@
+= simple_form_for  :search, url: root_path, method: 'get' do |f|
+ p
+  = f.input :name
+  = f.button :button, :search, class: 'btn-primary'
