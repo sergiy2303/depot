@@ -1,4 +1,4 @@
-div class='content'
+.content
   h1 DEPOT
   p Don't have an account?
   div
@@ -8,7 +8,7 @@ div class='content'
 .row.search-field
   .col-xs-3.col-xs-offset-9
     = label_tag :search, 'Search'
-    = text_field_tag :search, '', class: 'form-control search-field'
+    = text_field_tag :search, '', class: 'form-control search-field', 'data-href' => search_products_path
 .row
   .col-xs-3.categories-body
     = render 'categories'

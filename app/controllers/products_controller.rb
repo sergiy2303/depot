@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   def index
     @session = Session.new
     if params[:id]
-      @products = products.where(category_id: params[:id])
+      @products = Product.where(category_id: params[:id]).page(params[:page]).per(9)
     else
       @products = products
     end
@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
 
   def search
     if params[:search].present?
-      @products = Product.page(params[:page]).per(9).search(params[:search]).records
+      @products = Product.search(params[:search]).records.page(params[:page]).per(9)
     else
       @products = products
     end
@@ -31,7 +31,7 @@ class ProductsController < ApplicationController
   helper_method :product
 
   def current_product
-    @product = Product.find_by(id: params[:id])
+    @product = Product.find(params[:id])
   end
   helper_method :current_product
 

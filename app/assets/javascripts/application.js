@@ -29,7 +29,8 @@ $(document).on('change', 'input#product_image', function(){
 
 $(document).on('change keyup', 'input.search-field', function() {
   var value = $(this).val();
-  $.get("/products/search", {search: value}, function(data) {
+  var href = this.getAttribute('data-href');
+  $.get(href, {search: value}, function(data) {
     $('.products-body').html(data);
   });
 })
