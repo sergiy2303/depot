@@ -1,5 +1,4 @@
-class Admin::CategoriesController < ApplicationController
-  before_action :require_user
+class Admin::CategoriesController < Admin::AdminsController
   expose :category
   expose(:categories) { |default| default.page(params[:page]).per(10) }
 
