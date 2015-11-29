@@ -1,4 +1,7 @@
 = paginate products
+- if products.empty?
+  .alert.alert-info
+    h3 Sorry no results found
 - products.each_slice(4) do |group|
   .row
     = render partial: 'product', collection: group
