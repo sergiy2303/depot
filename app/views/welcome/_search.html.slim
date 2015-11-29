@@ -1,4 +1,4 @@
-= simple_form_for '', url: root_path, remote: true, method: 'get' do |f|
+= simple_form_for '', url: categories_path(params[:slug]), remote: true, method: 'get' do |f|
  p
   = f.input :search, input_html: { value: params[:search] }
   = f.button :button, :search, class: 'btn-primary'
