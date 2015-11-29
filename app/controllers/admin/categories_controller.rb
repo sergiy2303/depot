@@ -1,5 +1,5 @@
 class Admin::CategoriesController < Admin::AdminsController
-  expose :category
+  expose(:category, finder: :find_by_slug)
   expose(:categories) { |default| default.page(params[:page]).per(10) }
 
   def create
