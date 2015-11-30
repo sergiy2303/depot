@@ -1,4 +1,8 @@
-div class='content'
+#productModal
+  - if product.id
+    = render 'modal'
+
+.content
   .row
    .col-md-3
     h1 Hello!

@@ -1,0 +1,23 @@
+.modal.fade tabindex="-1" role = "dialog"
+  .modal-dialog role="document"
+    .modal-content
+      .modal-header
+        button.close type="button" data-dismiss="modal" aria-label="Close"
+          | &times
+        h3.modal-title = product.name
+      .modal-body
+        .row
+          .col-sm-4
+            = image_tag(product.image)
+          .col-sm-4.col-sm-offset-4
+            h4 Description:
+            = product.description
+            .row
+              .col-sm-6
+                h3 Cost:
+              .col-sm-6
+                h3 = number_to_currency(product.price)
+            .modal-footer
+              button.btn.btn-primary type="Button"
+                ' Add to cart
+                span.glyphicon.glyphicon-shopping-cart
