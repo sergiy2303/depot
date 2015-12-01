@@ -21,6 +21,7 @@ gem 'sucker_punch'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 gem 'bcrypt', '~> 3.1.7'
+gem 'friendly_id', '~> 5.1.0'
 
 group :development, :test do
   gem 'capybara'

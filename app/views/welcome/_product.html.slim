@@ -5,4 +5,21 @@
       h3 = product.name
       p  = product.description
       p  = number_to_currency(product.price)
+      button.btn.btn-info.btn-lg data-target="##{product.id}" data-toggle="modal" type="button"  Open
 
+.modal.fade role="dialog" id=product.id
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close data-dismiss="modal" type="button"  &times;
+        h3.modal-title = product.name
+      .modal-body
+        .product-image.text-center
+          = image_tag(product.image)
+        h4.text-success Description
+        p.text-primary  = product.description
+        p.text-muted.text-right
+          | Price 
+          = number_to_currency(product.price)
+      .modal-footer
+        button.btn.btn-default data-dismiss="modal" type="button"  Close

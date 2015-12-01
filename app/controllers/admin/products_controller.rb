@@ -1,4 +1,4 @@
-class Admin::ProductsController < ApplicationController
+class Admin::ProductsController < AdminController
   expose :product
   expose(:products) { |default| default.page(params[:page]).per(10) }
 
