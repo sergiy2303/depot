@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :require_guest, only: :new
 
   def create
-    if user.update(params.require(:user).permit!)
+    if user.update(user_params)
       UserMailer.registration_confirmation(user, verifier.generate(user.id)).deliver_later
       flash[:success] = 'Please confirm your email address to continue'
       redirect_via_turbolinks_to root_path
@@ -21,6 +21,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def user_params
+    params.require(:user).permit!
+  end
 
   def user
     @user ||= User.new
