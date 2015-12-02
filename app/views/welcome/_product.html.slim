@@ -1,6 +1,6 @@
 .col-sm-3
   .thumbnail
-    = image_tag(product.image)
+    = link_to (image_tag(product.image)), params.merge(id: product.id), remote: true
     .caption
       h3 = product.name
       p  = product.description

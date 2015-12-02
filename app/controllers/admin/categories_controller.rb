@@ -1,6 +1,5 @@
-class Admin::CategoriesController < ApplicationController
-  before_action :require_user
-  expose :category
+class Admin::CategoriesController < Admin::AdminsController
+  expose(:category, finder: :find_by_slug)
   expose(:categories) { |default| default.page(params[:page]).per(10) }
 
   def create
