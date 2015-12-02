@@ -7,6 +7,8 @@ class Category < ActiveRecord::Base
     slug
   end
 
+  private
+
   def to_slug
     self.slug = title.parameterize
   end

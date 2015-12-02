@@ -12,9 +12,7 @@ class Admin::CategoriesController < Admin::AdminsController
   end
 
   def update
-    category.update(category_params)
-    flash[:success] = 'Category was successfully updated'
-    redirect_via_turbolinks_to admin_categories_path
+    create
   end
 
   def destroy

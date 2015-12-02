@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
   resource :user
   resource :session, only: [:new, :create, :destroy]
-  root 'welcome#index'
-  get 'categories/(:slug)' => 'welcome#index', as: :categories
+  resources :products, only: [:show]
+  resources :orders, only: [:show, :destroy] do
+    patch ':id', to: :create, as: :cart, on: :collection
+  end
+
+  root 'products#index'
+  get 'categories/(:slug)', to: 'products#index', as: :categories
   resources :users do
     get :confirm, on: :member
   end

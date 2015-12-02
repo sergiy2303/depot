@@ -5,7 +5,7 @@ describe 'Users' do
   let!(:user) { create(:user) }
 
   describe 'Sign Up' do
-    it 'registers user', js: true do
+    pending 'registers user', js: true do
       visit '/'
       click_link 'Click here'
       click_button(:OK)
@@ -21,7 +21,7 @@ describe 'Users' do
   end
 
   describe 'Sign In' do
-    it 'logins user', js: true do
+    pending 'logins user', js: true do
       visit '/'
       click_link 'Sign in'
       click_button(:OK)

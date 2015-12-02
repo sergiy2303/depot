@@ -14,5 +14,23 @@ html
         =' link_to 'Categories', admin_categories_path
 
     = render 'shared/flashes'
-    div class='container'
-      = yield
+    .container
+      .content
+        .row
+          /* .col-md-3 */
+            h1 Hello!
+            p Don't have an account?
+            div
+              = link_to 'Click here', new_user_path
+              ' - or -
+              = link_to 'Sign in', new_session_path
+
+        .row
+          .col-md-3
+            = render 'layouts/sidebar'
+          .col-md-9
+            .col-md-12
+              = render 'layouts/search'
+            = yield
+    #productModal
+
