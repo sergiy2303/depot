@@ -1,0 +1,10 @@
+.navbar.navbar-default
+  .container-fluid
+    ul.nav.navbar-nav
+      li
+        = link_to 'Home', root_path
+      li
+        = link_to orders_path, class: "navbar-right" do
+          ' Cart
+          span.glyphicon.glyphicon-shopping-cart
+          = session[:products].size
