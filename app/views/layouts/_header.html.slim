@@ -7,4 +7,5 @@
         = link_to orders_path, class: "navbar-right" do
           ' Cart
           span.glyphicon.glyphicon-shopping-cart
-          = session[:products].size
+          - if cart.any?
+            = cart.size

@@ -27,4 +27,9 @@ class ApplicationController < ActionController::Base
     flash[:warning] = 'Ooooops'
     redirect_to root_path
   end
+
+  def cart
+    session[:products] ||= []
+  end
+  helper_method :cart
 end
