@@ -1,0 +1,20 @@
+.modal.fade.cart tabindex="-1" role = "dialog"
+  .modal-dialog role="document"
+    .modal-content
+      .modal-header
+        h3 Cart
+      .modal-body
+        - if @products.nil?
+          h2 Cart is empty
+        - else
+          - @products.each do |product|
+            .row
+              .col-xs-3
+                = image_tag product.image
+              .col-xs-3
+                = product.name
+              .col-xs-2
+                = product.price
+              .col-xs-2
+                = session[:products][product.id.to_s]
+

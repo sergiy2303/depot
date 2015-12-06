@@ -1,0 +1,14 @@
+
+- if @products.nil?
+  h2 Cart is empty
+- else
+  - @products.each do |product|
+    .row
+      .product-image.col-xs-3
+        = image_tag product.image_tag
+      .product-name.col-xs-3
+        = product.product
+      .product-price.col-xs-2
+        = product.price
+      .product-quantity.col-xs-2
+        = session[:products][product.id.to_s]

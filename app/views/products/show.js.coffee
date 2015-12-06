@@ -1,2 +1,2 @@
 $('#productModal').html("<%= j(render 'modal') %>")
-$('.modal').modal()
+$('.modal.product').modal()
