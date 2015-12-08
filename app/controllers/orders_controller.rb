@@ -6,5 +6,6 @@ class OrdersController < ApplicationController
   end
 
   def destroy
+    cart.delete(params[:id])
   end
 end
