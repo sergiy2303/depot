@@ -22,7 +22,7 @@
               .col-sm-2
                 = number_field_tag "quantity_#{product.id}", '1', in: 1...11
               .col-sm-2
-                = link_to order_path(id: product), remote: true, method: :delete do
+                = link_to order_path(id: product), id: "delete_#{product.id}", remote: true, method: :delete do
                   | &times
       .modal-footer
         .row
