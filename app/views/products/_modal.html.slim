@@ -21,7 +21,7 @@
               = form_tag cart_orders_path, remote: true, method: :patch do
                 - unless product_added?
                   = label_tag :quantity, 'Quantity'
-                  = number_field_tag :quantity, 0, in: 0..99, class: 'form-control'
+                  = number_field_tag :quantity, 1, in: 1..99, class: 'form-control'
                 br
                 = button_tag class: 'btn btn-primary', disabled: product_added?, data: { disable_with: 'Wait...' } do
                   = product_added? ? 'In cart' : 'Add to cart'

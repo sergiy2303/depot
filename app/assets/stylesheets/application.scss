@@ -1,2 +1,15 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+
+.cart-row {
+  padding: 5px;
+  margin: 5px;
+  .col-xs-2.image img{
+    height: 45px;
+  }
+}
+.total {
+  padding: 5px;
+  font-weight: bold;
+}
+

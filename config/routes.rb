@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :cart, only: [:index]
   resources :products, only: [:show]
   resources :orders, only: [:show, :destroy] do
-    patch ':id', to: :create, as: :cart, on: :collection
+    patch ':id', action: :create, as: :cart, on: :collection
   end
 
   root 'products#index'

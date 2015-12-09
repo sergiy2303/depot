@@ -2,19 +2,25 @@
   .modal-dialog role="document"
     .modal-content
       .modal-header
-        h3 Cart
+        button.close type="button" data-dismiss="modal" aria-label="Close"
+          | &times
+        h3.modal-title Cart
       .modal-body
         - if @products.nil?
           h2 Cart is empty
         - else
           - @products.each do |product|
-            .row
-              .col-xs-3
+            .row.cart-row
+              .col-xs-2.image
                 = image_tag product.image
-              .col-xs-3
+              .col-xs-4.name
                 = product.name
-              .col-xs-2
+              .col-xs-2.price
                 = product.price
-              .col-xs-2
-                = session[:products][product.id.to_s]
+              .col-xs-3.quantity
+                = label_tag :quantity, 'Quantity'
+                = number_field_tag :quantity, session[:products][product.id.to_s], in: 1..99, class: 'form-control'
+          .row
+            .total.col-xs-3.col-xs-offset-8
+
 

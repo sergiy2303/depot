@@ -1,3 +1,2 @@
-$('.modal').modal('toggle')
-$('body').prepend("<%= j(render 'shared/flashes') %>")
+$('.modal.product').modal('toggle')
 $('.row.navbar').html("<%= j(render 'shared/navbar' )%>")

@@ -1,6 +1,6 @@
 module ApplicationHelper
   def products_counter
-    return 'empty' if session[:products].nil?
+    return 'empty' if session[:products].nil? || session[:products].empty?
     session[:products].count
   end
 

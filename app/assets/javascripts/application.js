@@ -30,3 +30,25 @@ $(document).on('change', 'input#product_image', function(){
 $(document).on('keyup', '#_search', function(){
   $(this.form).trigger('submit.rails');
 })
+
+$(document).on('change keyup blur', '.modal.cart input#quantity', function() {
+  $('.total.col-xs-3').text('Total: ' + totalPrice());
+})
+
+$(document).on('shown.bs.modal', function() {
+  $('.total.col-xs-3').text('Total: ' + totalPrice());
+})
+
+function totalPrice() {
+  var cart = $('.cart-row');
+  var prices = cart.map( function(row) {
+    var price = parseFloat(cart.eq(row).find('.price').text());
+    var quantity = Number(cart.eq(row).find('.quantity input').val());
+    return price * quantity
+  });
+  var total = 0;
+  $.each(prices, function() {
+    total += this;
+  });
+  return total.toFixed(2)
+}
