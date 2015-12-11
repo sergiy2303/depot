@@ -1,2 +1,3 @@
 $('header').html("<%= j(render 'layouts/header') %>")
-$('#cartModal .modal').modal('toggle')
+$('.products-in-cart').html("<%= j(render 'products') %>")
+$('#total_price').text('Order total: ' + totalPrice(0))
