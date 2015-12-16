@@ -11,7 +11,7 @@ describe 'Orders' do
       expect(page).to have_content('Cart 1')
       click_link 'Cart'
       expect(page).to have_content("#{product.price}")
-      fill_in "quantity_#{product.id}", with: '7'
+      fill_in 'order_products_attributes_0_quantity', with: '7'
       expect(page).to have_content("Order total: #{product.price * 7}")
     end
     it 'remove product from cart', js: true do
@@ -19,7 +19,7 @@ describe 'Orders' do
       first('.product-link').click
       click_link 'Add to cart'
       click_link 'Cart'
-      click_link "delete_#{product.id}"
+      find_link("delete_#{product.id}").trigger(:click)
       expect(page).not_to have_content('Cart 1')
     end
   end

@@ -5,7 +5,26 @@ class OrdersController < ApplicationController
     cart << params[:id]
   end
 
+  def update
+    if order.update(order_params)
+      session[:products] = []
+    else
+      render :new
+    end
+  end
+
   def destroy
     cart.delete(params[:id])
+  end
+
+  private
+
+  def order
+    @order ||= Order.new
+  end
+  helper_method :order
+
+  def order_params
+    params.require(:order).permit!
   end
 end
