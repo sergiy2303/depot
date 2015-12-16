@@ -1,11 +1,11 @@
 class OrdersController < ApplicationController
+  expose(:products) { |default| default.in_cart(cart) }
   def create
-    session[:products] ||= []
-    flash[:success] = 'Added'
-    return if session[:products].include? params[:id]
-    session[:products] << params[:id]
+    return if cart.include? params[:id]
+    cart << params[:id]
   end
 
   def destroy
+    cart.delete(params[:id])
   end
 end

@@ -10,11 +10,14 @@ html
       = current_user.email
       = link_to 'Sign Out', session_path, method: :delete, remote: true
       .manage
-        =' link_to 'Products', admin_products_path
-        =' link_to 'Categories', admin_categories_path
+        => link_to 'Products', admin_products_path
+        => link_to 'Categories', admin_categories_path
 
     = render 'shared/flashes'
     .container
+      header
+        = render 'layouts/header'
+
       .content
         .row
           /* .col-md-3 */
@@ -33,4 +36,5 @@ html
               = render 'layouts/search'
             = yield
     #productModal
+    #cartModal
 

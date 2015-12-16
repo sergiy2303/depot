@@ -1,0 +1,11 @@
+.navbar.navbar-default
+  .container-fluid
+    ul.nav.navbar-nav
+      li
+        = link_to 'Home', root_path
+      li
+        = link_to orders_path, remote: true, class: "navbar-right" do
+          ' Cart
+          span.glyphicon.glyphicon-shopping-cart
+          - if cart.any?
+            = cart.size

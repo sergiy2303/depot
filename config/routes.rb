@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   resource :user
   resource :session, only: [:new, :create, :destroy]
   resources :products, only: [:show]
-  resources :orders, only: [:show, :destroy] do
-    patch ':id', to: :create, as: :cart, on: :collection
+  resources :orders, only: [:index, :show, :destroy] do
+    patch ':id', action: :create, as: :cart, on: :collection
   end
 
   root 'products#index'

@@ -1,2 +1,2 @@
-$('.modal').modal('toggle')
-$('body').prepend("<%= j(render 'shared/flashes') %>")
+$('#productModal .modal').modal('toggle')
+$('header').html("<%= j(render 'layouts/header') %>")

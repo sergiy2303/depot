@@ -30,3 +30,20 @@ $(document).on('change', 'input#product_image', function(){
 $(document).on('keyup', '#_search', function(){
   $(this.form).trigger('submit.rails');
 })
+
+$(document).on('click keyup', "[type='number']", function(){
+  $('#total_price').text('Order total: ' + totalPrice(0));
+})
+
+$(document).on('shown.bs.modal', function(){
+  $('#total_price').text('Order total: ' + totalPrice(0));
+})
+
+function totalPrice(total) {
+  $(".price" ).each(function(index) {
+    var price = $(this).text();
+    var quantity = $("[type='number']").eq(index).val();
+    total += price * quantity;
+  });
+  return total.toFixed(2);
+}
