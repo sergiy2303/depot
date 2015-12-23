@@ -14,7 +14,7 @@ class Order < ActiveRecord::Base
   private
 
   def cal_total
-    res = self.products.map do |product|
+    res = products.map do |product|
       product.quantity * product.product.price.to_f
     end
     self.total = res.sum
