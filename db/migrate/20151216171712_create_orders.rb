@@ -4,7 +4,7 @@ class CreateOrders < ActiveRecord::Migration
       t.string :email
       t.string :phone
       t.string :address
-      t.decimal :total, precision: 2, scale: 10
+      t.decimal :total, precision: 10, scale: 2
 
       t.timestamps null: false
     end
